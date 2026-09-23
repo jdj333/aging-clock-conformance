@@ -1,0 +1,16 @@
+{
+  "specification_version": "1.0.0",
+  "reference_environment": {
+    "normalized_beta_absolute": 1e-12,
+    "linear_score_absolute": 1e-12,
+    "age_years_absolute": 1e-10
+  },
+  "independent_implementation": {
+    "normalized_beta_absolute": 1e-6,
+    "linear_score_absolute": 1e-6,
+    "age_years_absolute": 0.01
+  },
+  "publisher_tutorial": {
+    "comparison": "two_significant_digits"
+  }
+}

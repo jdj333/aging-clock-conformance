@@ -1,0 +1,587 @@
+{
+  "clock_id": "horvath-2013",
+  "expected": {
+    "derived_from": [
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/expected/r-4.5.2-rpmm-1.25/normalized-clock-probes.csv",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile23predictor.csv",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile25stepwiseAnalysis.R",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile20Tutorial.docx",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R"
+    ],
+    "path": "clocks/horvath-2013/fixtures/v1/expected-ages.csv",
+    "role": "expected_ages",
+    "sha256": "12268965a9b12360d6e6d30729611e2f1892c7277b15d1bacafd7d72eb7fde16",
+    "source_id": "reference-run",
+    "transformation": "Unchanged numerical derivative of the publisher tutorial, generated upstream using the checksummed R runner and source inputs listed in derived_from. No values regenerated here."
+  },
+  "expected_columns": {
+    "linear_score": "linear_score",
+    "publisher_rounded": "published_age_two_significant_digits",
+    "result": "dnam_age_years",
+    "sample_id": "sample_id",
+    "significant_digits": 2
+  },
+  "fixture_id": "horvath-2013-publisher-normalized-v1",
+  "input": {
+    "derived_from": [
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile26MethylationDataExample55.csv",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile22probeAnnotation21kdatMethUsed.csv",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile24normalization.R",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile23predictor.csv",
+      "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R"
+    ],
+    "path": "clocks/horvath-2013/fixtures/v1/normalized-clock-probes.csv",
+    "role": "normalized_clock_probes",
+    "sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+    "source_id": "reference-run",
+    "transformation": "Unchanged numerical derivative of the publisher tutorial, generated upstream using the checksummed R runner and source inputs listed in derived_from. No values regenerated here."
+  },
+  "input_description": "353 normalized CpGs from 16 public GSE38608 occipital cortex tutorial samples; upstream publisher BMIQ pipeline with set.seed(1). No private sample is included.",
+  "profile": "score-v1",
+  "provenance": [
+    {
+      "accessed": "2026-09-20",
+      "author": "Steve Horvath",
+      "doi": "10.1186/gb-2013-14-10-r115",
+      "id": "publisher",
+      "license": "CC-BY-2.0",
+      "locator": "Methods; Figures 1 and 2; supplementary tutorial; rights and permissions.",
+      "revision": null,
+      "title": "DNA methylation age of human tissues and cell types",
+      "url": "https://doi.org/10.1186/gb-2013-14-10-r115"
+    },
+    {
+      "accessed": "2026-09-20",
+      "author": "Horvath methylation age research contributors",
+      "doi": null,
+      "id": "reference-run",
+      "license": "MIT; derived scientific data CC-BY-2.0",
+      "locator": "R 4.5.2, RPMM 1.25, cluster 2.1.8.1; source and output hashes in upstream-suite.json. No fresh normalization run claimed here.",
+      "revision": "c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a",
+      "title": "Independent R reference run and frozen outputs",
+      "url": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R"
+    },
+    {
+      "accessed": "2026-09-20",
+      "author": "Horvath methylation age research contributors",
+      "doi": null,
+      "id": "upstream-spec",
+      "license": "MIT",
+      "locator": "Complete normalized 353-probe score profile; binary64 beta range; exact source artifacts.",
+      "revision": "c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a",
+      "title": "Horvath normalized score-v1 conformance specification",
+      "url": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/spec/horvath-2013-v1.md"
+    }
+  ],
+  "reference_implementation": {
+    "algorithm_revision": "publisher-pipeline-v1",
+    "clock_id": "horvath-2013",
+    "deterministic": true,
+    "execution_mode": "recorded",
+    "implementation_id": "reference-r-recorded",
+    "language": "R",
+    "runtime": "Historical upstream R 4.5.2 on linux/arm64; see r-session-info.txt; source normalization was run upstream, not in this package.",
+    "source": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+    "source_sha256": "0d082ec7acfccd7e89726a634f70b00b56f72e7dc6bc1f3a6a40f5155bee6925",
+    "stage": "normalized_beta",
+    "version": "R-4.5.2-RPMM-1.25-cluster-2.1.8.1"
+  },
+  "samples": [
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946048",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946048"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946049",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946049"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946052",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946052"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946054",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946054"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946055",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946055"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946056",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946056"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946059",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946059"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946062",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946062"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946064",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946064"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946065",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946065"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946066",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946066"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946067",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946067"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946073",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946073"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946074",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946074"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946075",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946075"
+    },
+    {
+      "expected_status": "CONDITIONALLY_APPLICABLE",
+      "metadata": {
+        "assay": {
+          "method": "bisulfite_array",
+          "platform": "illumina_27k"
+        },
+        "genome_build": null,
+        "input_format": "matrix",
+        "measurements": null,
+        "measurements_sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "modality": "dna_methylation",
+        "preprocessing": {
+          "evidence": "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R",
+          "normalization": "horvath-2013-bmiq",
+          "reference_sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+          "stage": "normalized_beta"
+        },
+        "sample_id": "GSM946076",
+        "sample_type": "DNA",
+        "schema_version": "1.0",
+        "species": "Homo sapiens",
+        "tissue": "occipital_cortex",
+        "unit": "beta_fraction"
+      },
+      "sample_id": "GSM946076"
+    }
+  ],
+  "schema_version": "1.0",
+  "stage": "normalized_beta",
+  "supporting_artifacts": [
+    {
+      "derived_from": [],
+      "path": "clocks/horvath-2013/sources/tutorial.docx",
+      "role": "publisher_tutorial",
+      "sha256": "8aa584b5f44efaf34ac353eccff1ac94f0314fc4c18c8d3fd56e3ad03dd7e667",
+      "source_id": "publisher",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    },
+    {
+      "derived_from": [],
+      "path": "clocks/horvath-2013/sources/publisher-scoring.R",
+      "role": "scoring_implementation",
+      "sha256": "8115728496426150a9841a9a3d605d5f6f62912f9421005c9a90541f27261b66",
+      "source_id": "publisher",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    },
+    {
+      "derived_from": [
+        "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile20Tutorial.docx",
+        "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/data/reference/horvath-2013/original/AdditionalFile25stepwiseAnalysis.R"
+      ],
+      "path": "clocks/horvath-2013/sources/upstream-run-reference.R",
+      "role": "runner",
+      "sha256": "0d082ec7acfccd7e89726a634f70b00b56f72e7dc6bc1f3a6a40f5155bee6925",
+      "source_id": "reference-run",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    },
+    {
+      "derived_from": [
+        "https://github.com/jdj333/horvath_methylation_age/blob/c3d1cfe1beb162add6ce8c1a1c21606f89c8a64a/conformance/run_reference.R"
+      ],
+      "path": "clocks/horvath-2013/fixtures/v1/r-session-info.txt",
+      "role": "session_info",
+      "sha256": "77665cf703393077316cbdf5f2851e16bdcec528d23037d53bb6dec18c93f78c",
+      "source_id": "reference-run",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    },
+    {
+      "derived_from": [],
+      "path": "clocks/horvath-2013/sources/upstream-tolerances.json",
+      "role": "tolerances",
+      "sha256": "80ad2f17c63a5f4c84b4432582efd885dd40b757aa822d0d506a49e5e898fa87",
+      "source_id": "reference-run",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    },
+    {
+      "derived_from": [],
+      "path": "clocks/horvath-2013/sources/upstream-suite.json",
+      "role": "upstream-manifest",
+      "sha256": "0b4e215094ecf1e8eafabbf3e739a8150a6093d1cab1d83af4067cde9fa3b935",
+      "source_id": "reference-run",
+      "transformation": "Unchanged bytes from the pinned upstream checkout; local filename may differ."
+    }
+  ],
+  "tolerance": {
+    "linear_score_absolute": 1e-12,
+    "rationale": "Inherited upstream reference_environment tolerances for scoring its unchanged serialized normalized fixture. These are absolute arithmetic tolerances, not biological accuracy thresholds. Both float round-trip differences and the transform amplification fit inside these bounds. Publisher display is checked separately at two significant digits.",
+    "result_absolute": 1e-10,
+    "source_id": "reference-run"
+  },
+  "version": "1.0.0"
+}

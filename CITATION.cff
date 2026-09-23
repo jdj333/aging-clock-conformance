@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: >-
+  Cite the toolkit version and the original clock publication. Preserve the
+  fixture version, implementation ID, and provenance report with analyses.
+title: Aging Clock Conformance
+type: software
+version: 0.1.0
+authors:
+  - name: Aging Clock Conformance contributors
+repository-code: https://github.com/jdj333/aging-clock-conformance
+url: https://github.com/jdj333/aging-clock-conformance
+license: MIT
+abstract: >-
+  Local research infrastructure for validating biological aging-clock inputs,
+  making explicit applicability decisions, and checking implementations against
+  independently generated reference fixtures. Third-party scientific materials
+  retain their separate licenses as documented in NOTICE.md.
+keywords:
+  - aging clocks
+  - conformance
+  - reproducibility
+  - DNA methylation
+references:
+  - type: article
+    title: DNA methylation age of human tissues and cell types
+    authors:
+      - family-names: Horvath
+        given-names: Steve
+    journal: Genome Biology
+    year: 2013
+    volume: 14
+    doi: 10.1186/gb-2013-14-10-r115
+  - type: article
+    title: 'Erratum to: DNA methylation age of human tissues and cell types'
+    authors:
+      - family-names: Horvath
+        given-names: Steve
+    journal: Genome Biology
+    year: 2015
+    doi: 10.1186/s13059-015-0649-6

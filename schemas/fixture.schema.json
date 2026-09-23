@@ -1,0 +1,705 @@
+{
+  "$defs": {
+    "ApplicabilityStatus": {
+      "enum": [
+        "APPLICABLE",
+        "CONDITIONALLY_APPLICABLE",
+        "NOT_APPLICABLE",
+        "INSUFFICIENT_METADATA",
+        "UNSUPPORTED"
+      ],
+      "title": "ApplicabilityStatus",
+      "type": "string"
+    },
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "derived_from": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Derived From",
+          "type": "array"
+        },
+        "path": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Path",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Role",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "transformation": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Transformation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "source_id",
+        "role",
+        "transformation"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "Assay": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "platform": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Platform"
+        }
+      },
+      "title": "Assay",
+      "type": "object"
+    },
+    "ExpectedColumns": {
+      "additionalProperties": false,
+      "properties": {
+        "linear_score": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Linear Score",
+          "type": "string"
+        },
+        "publisher_rounded": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publisher Rounded"
+        },
+        "result": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Result",
+          "type": "string"
+        },
+        "sample_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "significant_digits": {
+          "anyOf": [
+            {
+              "maximum": 17,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Significant Digits"
+        }
+      },
+      "required": [
+        "sample_id",
+        "linear_score",
+        "result"
+      ],
+      "title": "ExpectedColumns",
+      "type": "object"
+    },
+    "ExpectedSample": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_status": {
+          "$ref": "#/$defs/ApplicabilityStatus"
+        },
+        "metadata": {
+          "$ref": "#/$defs/SampleManifest"
+        },
+        "sample_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Sample Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sample_id",
+        "expected_status",
+        "metadata"
+      ],
+      "title": "ExpectedSample",
+      "type": "object"
+    },
+    "ImplementationMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm_revision": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Algorithm Revision",
+          "type": "string"
+        },
+        "clock_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Clock Id",
+          "type": "string"
+        },
+        "deterministic": {
+          "const": true,
+          "title": "Deterministic",
+          "type": "boolean"
+        },
+        "execution_mode": {
+          "enum": [
+            "executed",
+            "recorded"
+          ],
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "implementation_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Implementation Id",
+          "type": "string"
+        },
+        "language": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Language",
+          "type": "string"
+        },
+        "runtime": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Runtime",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source",
+          "type": "string"
+        },
+        "source_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "stage": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Stage",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "implementation_id",
+        "clock_id",
+        "version",
+        "language",
+        "source",
+        "source_sha256",
+        "algorithm_revision",
+        "stage",
+        "deterministic",
+        "execution_mode",
+        "runtime"
+      ],
+      "title": "ImplementationMetadata",
+      "type": "object"
+    },
+    "Preprocessing": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "normalization": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalization"
+        },
+        "reference_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Sha256"
+        },
+        "stage": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stage"
+        }
+      },
+      "title": "Preprocessing",
+      "type": "object"
+    },
+    "SampleManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "assay": {
+          "$ref": "#/$defs/Assay"
+        },
+        "genome_build": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Genome Build"
+        },
+        "input_format": {
+          "default": "long",
+          "enum": [
+            "long",
+            "matrix"
+          ],
+          "title": "Input Format",
+          "type": "string"
+        },
+        "measurements": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Measurements"
+        },
+        "measurements_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Measurements Sha256"
+        },
+        "modality": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Modality"
+        },
+        "preprocessing": {
+          "$ref": "#/$defs/Preprocessing"
+        },
+        "sample_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "sample_type": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sample Type"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "species": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Species"
+        },
+        "tissue": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tissue"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "sample_id"
+      ],
+      "title": "SampleManifest",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "accessed": {
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Accessed",
+          "type": "string"
+        },
+        "author": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Author",
+          "type": "string"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Doi"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "license": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "License",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Locator",
+          "type": "string"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "minLength": 1,
+          "pattern": "^https://",
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "author",
+        "url",
+        "accessed",
+        "license",
+        "locator"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "Tolerance": {
+      "additionalProperties": false,
+      "properties": {
+        "linear_score_absolute": {
+          "exclusiveMinimum": 0,
+          "title": "Linear Score Absolute",
+          "type": "number"
+        },
+        "rationale": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rationale",
+          "type": "string"
+        },
+        "result_absolute": {
+          "exclusiveMinimum": 0,
+          "title": "Result Absolute",
+          "type": "number"
+        },
+        "source_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "linear_score_absolute",
+        "result_absolute",
+        "rationale",
+        "source_id"
+      ],
+      "title": "Tolerance",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/jdj333/aging-clock-conformance/schemas/fixture.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "clock_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Clock Id",
+      "type": "string"
+    },
+    "expected": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "expected_columns": {
+      "$ref": "#/$defs/ExpectedColumns"
+    },
+    "fixture_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Fixture Id",
+      "type": "string"
+    },
+    "input": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "input_description": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Input Description",
+      "type": "string"
+    },
+    "profile": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Profile",
+      "type": "string"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "reference_implementation": {
+      "$ref": "#/$defs/ImplementationMetadata"
+    },
+    "samples": {
+      "items": {
+        "$ref": "#/$defs/ExpectedSample"
+      },
+      "minItems": 1,
+      "title": "Samples",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stage": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Stage",
+      "type": "string"
+    },
+    "supporting_artifacts": {
+      "items": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "title": "Supporting Artifacts",
+      "type": "array"
+    },
+    "tolerance": {
+      "$ref": "#/$defs/Tolerance"
+    },
+    "version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "fixture_id",
+    "version",
+    "clock_id",
+    "stage",
+    "profile",
+    "input_description",
+    "input",
+    "expected",
+    "expected_columns",
+    "supporting_artifacts",
+    "samples",
+    "tolerance",
+    "reference_implementation",
+    "provenance"
+  ],
+  "title": "FixtureSuite",
+  "type": "object"
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "../schemas/conformance-suite.schema.json",
+  "suite_id": "horvath-2013-publisher-tutorial-v1",
+  "specification_version": "1.0.0",
+  "clock": {
+    "clock_id": "horvath-2013",
+    "clock_version": "1.0.0",
+    "required_probe_count": 353
+  },
+  "fixture": [
+    {
+      "role": "publisher_tutorial",
+      "path": "data/reference/horvath-2013/original/AdditionalFile20Tutorial.docx",
+      "sha256": "8aa584b5f44efaf34ac353eccff1ac94f0314fc4c18c8d3fd56e3ad03dd7e667"
+    },
+    {
+      "role": "platform_annotation",
+      "path": "data/reference/horvath-2013/original/AdditionalFile21datMiniAnnotation27k.csv",
+      "sha256": "761c2330c661bcf300a52f8f0c48039bb24adcf39f62e7e6759f375de1481d46",
+      "records": 27578
+    },
+    {
+      "role": "normalization_reference",
+      "path": "data/reference/horvath-2013/original/AdditionalFile22probeAnnotation21kdatMethUsed.csv",
+      "sha256": "e4ea35396c429df1ea3ee64a3c0a012be16eba365ca5b8ae17328bbee13d2dd5",
+      "records": 21368
+    },
+    {
+      "role": "clock_coefficients",
+      "path": "data/reference/horvath-2013/original/AdditionalFile23predictor.csv",
+      "sha256": "14caeca93a4e44fcc5ccc53b888e08f684cf862c34e3ffae1ab4c96487e98c2f",
+      "records": 354
+    },
+    {
+      "role": "normalization_implementation",
+      "path": "data/reference/horvath-2013/original/AdditionalFile24normalization.R",
+      "sha256": "1f51e692e3663672fde5fd11de20962c440385458b88c3ea5a10b424f632b5b6"
+    },
+    {
+      "role": "scoring_implementation",
+      "path": "data/reference/horvath-2013/original/AdditionalFile25stepwiseAnalysis.R",
+      "sha256": "8115728496426150a9841a9a3d605d5f6f62912f9421005c9a90541f27261b66"
+    },
+    {
+      "role": "input_matrix",
+      "path": "data/reference/horvath-2013/original/AdditionalFile26MethylationDataExample55.csv",
+      "sha256": "0dcacab22264f4c89f5248aa1ac877759c53856685161d4f5b93d94eb47cebdc",
+      "records": 27578
+    },
+    {
+      "role": "sample_metadata",
+      "path": "data/reference/horvath-2013/original/AdditionalFile27SampleAnnotation.csv",
+      "sha256": "b3aebfa66dfd505ea39114e895ea7502e8ccaf4cca8e10e3f1006ffe668066ac",
+      "records": 16
+    }
+  ],
+  "publisher_expectation": {
+    "source_path": "data/reference/horvath-2013/original/AdditionalFile20Tutorial.docx",
+    "comparison": "two_significant_digits",
+    "ages": [
+      {"sample_id": "GSM946048", "age": 60.0},
+      {"sample_id": "GSM946049", "age": 43.0},
+      {"sample_id": "GSM946052", "age": 28.0},
+      {"sample_id": "GSM946054", "age": 38.0},
+      {"sample_id": "GSM946055", "age": 8.2},
+      {"sample_id": "GSM946056", "age": 20.0},
+      {"sample_id": "GSM946059", "age": 4.8},
+      {"sample_id": "GSM946062", "age": 38.0},
+      {"sample_id": "GSM946064", "age": 6.8},
+      {"sample_id": "GSM946065", "age": 3.6},
+      {"sample_id": "GSM946066", "age": 31.0},
+      {"sample_id": "GSM946067", "age": 0.98},
+      {"sample_id": "GSM946073", "age": 62.0},
+      {"sample_id": "GSM946074", "age": 24.0},
+      {"sample_id": "GSM946075", "age": 8.0},
+      {"sample_id": "GSM946076", "age": 43.0}
+    ]
+  },
+  "reference_run": {
+    "runtime": "R 4.5.2 on linux/arm64",
+    "container_image": "rocker/r-ver:4.5.2@sha256:fd4ccdd3a4a6f7ef805e2daeee2a0fe3bf126bc231f36351223baecf5a595a4c",
+    "package_versions": {
+      "RPMM": "1.25",
+      "cluster": "2.1.8.1"
+    },
+    "dependencies": [
+      {
+        "name": "RPMM",
+        "version": "1.25",
+        "source_url": "https://cloud.r-project.org/src/contrib/RPMM_1.25.tar.gz",
+        "sha256": "f04a524b13918062616beda50c4e759ce2719ce14150a0e677d07132086c88c8",
+        "license": "GPL-2.0-or-later"
+      }
+    ],
+    "files": [
+      {
+        "role": "runner",
+        "path": "conformance/run_reference.R",
+        "sha256": "0d082ec7acfccd7e89726a634f70b00b56f72e7dc6bc1f3a6a40f5155bee6925"
+      },
+      {
+        "role": "container_definition",
+        "path": "conformance/Dockerfile",
+        "sha256": "b4bd57e78364f63b1b3113f9e52a27cbf890a563ed09d14e9f7370befc33a1b0"
+      },
+      {
+        "role": "tolerances",
+        "path": "conformance/tolerances.json",
+        "sha256": "80ad2f17c63a5f4c84b4432582efd885dd40b757aa822d0d506a49e5e898fa87"
+      },
+      {
+        "role": "expected_ages",
+        "path": "conformance/expected/r-4.5.2-rpmm-1.25/expected-ages.csv",
+        "sha256": "12268965a9b12360d6e6d30729611e2f1892c7277b15d1bacafd7d72eb7fde16",
+        "records": 16
+      },
+      {
+        "role": "normalized_clock_probes",
+        "path": "conformance/expected/r-4.5.2-rpmm-1.25/normalized-clock-probes.csv",
+        "sha256": "1822620cc39b66a5ff31673ea6e1b5affd2187c4b4f209ace42b52328c509d33",
+        "records": 353
+      },
+      {
+        "role": "session_info",
+        "path": "conformance/expected/r-4.5.2-rpmm-1.25/session-info.txt",
+        "sha256": "77665cf703393077316cbdf5f2851e16bdcec528d23037d53bb6dec18c93f78c"
+      }
+    ]
+  },
+  "profiles": {
+    "data-v1": "passing",
+    "score-v1": "passing",
+    "pipeline-v1": "passing",
+    "independent-pipeline-v1": "pending"
+  }
+}

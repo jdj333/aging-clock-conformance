@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.csv -text
+*.docx binary
+src/aging_clock_conformance/data/** -text
+# Preserve imported publisher/session bytes, including their original whitespace.
+src/aging_clock_conformance/data/clocks/horvath-2013/predictor.csv -whitespace
+src/aging_clock_conformance/data/clocks/horvath-2013/sources/publisher-scoring.R -whitespace
+src/aging_clock_conformance/data/clocks/horvath-2013/fixtures/v1/r-session-info.txt -whitespace

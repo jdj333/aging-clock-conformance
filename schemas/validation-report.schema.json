@@ -1,0 +1,360 @@
+{
+  "$defs": {
+    "Applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "can_compute": {
+          "title": "Can Compute",
+          "type": "boolean"
+        },
+        "reasons": {
+          "items": {
+            "$ref": "#/$defs/Finding"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/ApplicabilityStatus"
+        }
+      },
+      "required": [
+        "status",
+        "can_compute",
+        "reasons"
+      ],
+      "title": "Applicability",
+      "type": "object"
+    },
+    "ApplicabilityStatus": {
+      "enum": [
+        "APPLICABLE",
+        "CONDITIONALLY_APPLICABLE",
+        "NOT_APPLICABLE",
+        "INSUFFICIENT_METADATA",
+        "UNSUPPORTED"
+      ],
+      "title": "ApplicabilityStatus",
+      "type": "string"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_percentage": {
+          "title": "Coverage Percentage",
+          "type": "number"
+        },
+        "extra_count": {
+          "title": "Extra Count",
+          "type": "integer"
+        },
+        "extra_features": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Extra Features",
+          "type": "array"
+        },
+        "invalid_count": {
+          "title": "Invalid Count",
+          "type": "integer"
+        },
+        "invalid_features": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Invalid Features",
+          "type": "array"
+        },
+        "missing_count": {
+          "title": "Missing Count",
+          "type": "integer"
+        },
+        "missing_features": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Missing Features",
+          "type": "array"
+        },
+        "present_count": {
+          "title": "Present Count",
+          "type": "integer"
+        },
+        "required_count": {
+          "title": "Required Count",
+          "type": "integer"
+        },
+        "usable_coverage_percentage": {
+          "title": "Usable Coverage Percentage",
+          "type": "number"
+        },
+        "valid_numeric_count": {
+          "title": "Valid Numeric Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "required_count",
+        "present_count",
+        "valid_numeric_count",
+        "missing_count",
+        "invalid_count",
+        "extra_count",
+        "coverage_percentage",
+        "usable_coverage_percentage",
+        "missing_features",
+        "invalid_features",
+        "extra_features"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Dimensions": {
+      "additionalProperties": false,
+      "properties": {
+        "assay_platform_compatibility": {
+          "enum": [
+            "DECLARED_COMPATIBLE",
+            "UNKNOWN",
+            "INCOMPATIBLE",
+            "UNSUPPORTED"
+          ],
+          "title": "Assay Platform Compatibility",
+          "type": "string"
+        },
+        "clinical_validity": {
+          "const": "NOT_ESTABLISHED",
+          "default": "NOT_ESTABLISHED",
+          "title": "Clinical Validity",
+          "type": "string"
+        },
+        "computational_applicability": {
+          "$ref": "#/$defs/ApplicabilityStatus"
+        },
+        "external_validation": {
+          "const": "NOT_ASSESSED",
+          "default": "NOT_ASSESSED",
+          "title": "External Validation",
+          "type": "string"
+        },
+        "feature_coverage": {
+          "enum": [
+            "COMPLETE",
+            "INCOMPLETE"
+          ],
+          "title": "Feature Coverage",
+          "type": "string"
+        },
+        "input_data_quality": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ],
+          "title": "Input Data Quality",
+          "type": "string"
+        },
+        "preprocessing_compatibility": {
+          "enum": [
+            "DECLARED_COMPATIBLE",
+            "UNKNOWN",
+            "INCOMPATIBLE",
+            "UNSUPPORTED"
+          ],
+          "title": "Preprocessing Compatibility",
+          "type": "string"
+        },
+        "reference_conformance": {
+          "enum": [
+            "NOT_RUN",
+            "REFERENCE_CONFORMANT",
+            "NONCONFORMANT"
+          ],
+          "title": "Reference Conformance",
+          "type": "string"
+        },
+        "schema_validity": {
+          "enum": [
+            "VALID",
+            "INVALID"
+          ],
+          "title": "Schema Validity",
+          "type": "string"
+        },
+        "tissue_compatibility": {
+          "enum": [
+            "DECLARED_COMPATIBLE",
+            "UNKNOWN",
+            "INCOMPATIBLE",
+            "UNSUPPORTED"
+          ],
+          "title": "Tissue Compatibility",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_validity",
+        "input_data_quality",
+        "feature_coverage",
+        "preprocessing_compatibility",
+        "assay_platform_compatibility",
+        "tissue_compatibility",
+        "computational_applicability",
+        "reference_conformance"
+      ],
+      "title": "Dimensions",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "schema",
+            "data_quality",
+            "coverage",
+            "metadata",
+            "implementation"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "code": {
+          "minLength": 1,
+          "pattern": "^ACC_[A-Z_]+$",
+          "title": "Code",
+          "type": "string"
+        },
+        "feature_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Feature Id"
+        },
+        "message": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Message",
+          "type": "string"
+        },
+        "row": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Row"
+        },
+        "severity": {
+          "$ref": "#/$defs/Severity"
+        }
+      },
+      "required": [
+        "code",
+        "severity",
+        "category",
+        "message"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "INFO",
+        "WARNING",
+        "ERROR",
+        "BLOCKING"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "$id": "https://github.com/jdj333/aging-clock-conformance/schemas/validation-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "applicability": {
+      "$ref": "#/$defs/Applicability"
+    },
+    "clock_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Clock Id",
+      "type": "string"
+    },
+    "coverage": {
+      "$ref": "#/$defs/Coverage"
+    },
+    "dimensions": {
+      "$ref": "#/$defs/Dimensions"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "input_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Input Sha256",
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Manifest Sha256"
+    },
+    "sample_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Sample Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "clock_id",
+    "sample_id",
+    "input_sha256",
+    "manifest_sha256",
+    "dimensions",
+    "findings",
+    "coverage",
+    "applicability"
+  ],
+  "title": "ValidationReport",
+  "type": "object"
+}

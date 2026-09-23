@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aging-clock-conformance"
+version = "0.1.0"
+description = "Reproducible input validation and reference conformance for biological aging clocks"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE.md"]
+authors = [{name = "Aging Clock Conformance contributors"}]
+keywords = ["aging", "methylation", "conformance", "reproducibility"]
+dependencies = ["pydantic>=2.11,<3", "typer>=0.27.2,<0.28", "rich>=13.8,<16", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.12,<2"]
+dev = [
+  "pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.12,<1", "mypy>=1.16,<2",
+  "types-PyYAML>=6,<7", "build>=1.2,<2", "pip-tools>=7,<8",
+  "hatchling>=1.27,<2", "jsonschema>=4.24,<5",
+  "editables>=0.5,<1",
+]
+
+[project.scripts]
+aging-clock = "aging_clock_conformance.cli:main"
+aging-clock-mcp = "aging_clock_conformance.mcp.server:main"
+
+[project.urls]
+Repository = "https://github.com/jdj333/aging-clock-conformance"
+Issues = "https://github.com/jdj333/aging-clock-conformance/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aging_clock_conformance"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "schemas/", "scripts/", "tests/", "docs/", "examples/", "requirements/", "*.md", "LICENSE", "CITATION.cff", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["integration: application and installed package integration", "conformance: independent reference checks", "mcp: MCP protocol and tool equivalence"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["typer.Option"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["aging_clock_conformance"]
+mypy_path = "src"
+
+[tool.coverage.run]
+source = ["aging_clock_conformance"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

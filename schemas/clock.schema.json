@@ -1,0 +1,612 @@
+{
+  "$defs": {
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "derived_from": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Derived From",
+          "type": "array"
+        },
+        "path": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Path",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Role",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "transformation": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Transformation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "source_id",
+        "role",
+        "transformation"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "FeatureContract": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "exclusiveMinimum": 0,
+          "title": "Count",
+          "type": "integer"
+        },
+        "identifier_pattern": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Identifier Pattern",
+          "type": "string"
+        },
+        "identifier_type": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Identifier Type",
+          "type": "string"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Maximum"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Minimum"
+        },
+        "source_ids": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "unit": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier_type",
+        "identifier_pattern",
+        "count",
+        "unit",
+        "minimum",
+        "maximum",
+        "source_ids"
+      ],
+      "title": "FeatureContract",
+      "type": "object"
+    },
+    "MissingDataPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "note": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Note",
+          "type": "string"
+        },
+        "policy": {
+          "enum": [
+            "complete_required",
+            "unsupported"
+          ],
+          "title": "Policy",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "policy",
+        "source_ids",
+        "note"
+      ],
+      "title": "MissingDataPolicy",
+      "type": "object"
+    },
+    "PreprocessingRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_required": {
+          "const": true,
+          "title": "Evidence Required",
+          "type": "boolean"
+        },
+        "normalization": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Normalization",
+          "type": "string"
+        },
+        "note": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Note",
+          "type": "string"
+        },
+        "reference_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Reference Sha256",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "stage": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stage",
+        "normalization",
+        "reference_sha256",
+        "evidence_required",
+        "source_ids",
+        "note"
+      ],
+      "title": "PreprocessingRequirement",
+      "type": "object"
+    },
+    "Requirement": {
+      "additionalProperties": false,
+      "properties": {
+        "accepted": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Accepted",
+          "type": "array"
+        },
+        "note": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Note",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "DOCUMENTED",
+            "UNKNOWN",
+            "UNSUPPORTED"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "accepted",
+        "source_ids",
+        "note"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "accessed": {
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Accessed",
+          "type": "string"
+        },
+        "author": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Author",
+          "type": "string"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Doi"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "license": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "License",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Locator",
+          "type": "string"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "minLength": 1,
+          "pattern": "^https://",
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "author",
+        "url",
+        "accessed",
+        "license",
+        "locator"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "Transform": {
+      "additionalProperties": false,
+      "properties": {
+        "adult_age": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Adult Age"
+        },
+        "formula": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Formula",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "adult_age",
+        "formula",
+        "source_ids"
+      ],
+      "title": "Transform",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/jdj333/aging-clock-conformance/schemas/clock.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "aliases": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "assay": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "clinical_validity": {
+      "const": "NOT_ESTABLISHED",
+      "title": "Clinical Validity",
+      "type": "string"
+    },
+    "clock_id": {
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Clock Id",
+      "type": "string"
+    },
+    "coefficient_column": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Coefficient Column",
+      "type": "string"
+    },
+    "coefficients": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "external_validation": {
+      "const": "NOT_ASSESSED",
+      "title": "External Validation",
+      "type": "string"
+    },
+    "feature_column": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Feature Column",
+      "type": "string"
+    },
+    "feature_contract": {
+      "$ref": "#/$defs/FeatureContract"
+    },
+    "fixture_manifest": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "genome_build_note": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Genome Build Note",
+      "type": "string"
+    },
+    "genome_build_required": {
+      "title": "Genome Build Required",
+      "type": "boolean"
+    },
+    "implementation_ids": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Implementation Ids",
+      "type": "array"
+    },
+    "intercept": {
+      "title": "Intercept",
+      "type": "number"
+    },
+    "intercept_label": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Intercept Label",
+      "type": "string"
+    },
+    "missing_data": {
+      "$ref": "#/$defs/MissingDataPolicy"
+    },
+    "modality": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "name": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Name",
+      "type": "string"
+    },
+    "notes": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "platform": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "preprocessing": {
+      "$ref": "#/$defs/PreprocessingRequirement"
+    },
+    "publication_source_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Publication Source Id",
+      "type": "string"
+    },
+    "publication_year": {
+      "title": "Publication Year",
+      "type": "integer"
+    },
+    "research_use_only": {
+      "const": true,
+      "title": "Research Use Only",
+      "type": "boolean"
+    },
+    "result_unit": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Result Unit",
+      "type": "string"
+    },
+    "sample_type": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scientific_source_ids": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Scientific Source Ids",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "species": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "target": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Target",
+      "type": "string"
+    },
+    "tissue": {
+      "$ref": "#/$defs/Requirement"
+    },
+    "transform": {
+      "$ref": "#/$defs/Transform"
+    },
+    "version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "clock_id",
+    "name",
+    "aliases",
+    "version",
+    "publication_year",
+    "publication_source_id",
+    "modality",
+    "species",
+    "tissue",
+    "sample_type",
+    "assay",
+    "platform",
+    "target",
+    "result_unit",
+    "feature_contract",
+    "coefficients",
+    "intercept",
+    "coefficient_column",
+    "feature_column",
+    "intercept_label",
+    "transform",
+    "preprocessing",
+    "missing_data",
+    "genome_build_required",
+    "genome_build_note",
+    "sources",
+    "implementation_ids",
+    "fixture_manifest",
+    "scientific_source_ids",
+    "external_validation",
+    "clinical_validity",
+    "research_use_only",
+    "notes"
+  ],
+  "title": "ClockDefinition",
+  "type": "object"
+}
