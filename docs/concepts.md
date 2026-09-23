@@ -36,6 +36,42 @@ laboratory. An evidence URL is recorded without being fetched, evaluated, or tre
 as independently verified. Tokens such as `unknown`, `unresolved`, and
 `not_documented` cannot satisfy required provenance.
 
+## Findings and stable codes
+
+Findings have a stable `code`, `severity`, `category`, human message, and optional
+feature ID and row number. Messages may improve between releases; integrations
+should branch on codes and structured states rather than matching message text.
+Categories are `schema`, `data_quality`, `coverage`, `metadata`, and `implementation`.
+
+| Severity | Effect |
+| --- | --- |
+| `INFO` | Observation; does not independently block computation |
+| `WARNING` | Explicit assumption or limitation; may accompany conditional applicability |
+| `ERROR` | Failed validation/conformance check; prevents a passing computation decision |
+| `BLOCKING` | An unmet prerequisite that prevents computation |
+
+Representative codes (the actual report retains every observed reason):
+
+| Code or family | Meaning |
+| --- | --- |
+| `ACC_DUPLICATE_FEATURE`, `ACC_CONFLICTING_DUPLICATE` | Repeated feature measurements; never collapsed |
+| `ACC_FEATURE_ID_MISSING`, `ACC_MALFORMED_IDENTIFIER` | Absent or invalid identifier |
+| `ACC_NULL_VALUE`, `ACC_NONNUMERIC_VALUE` | Explicit missing value or unsupported numeric text |
+| `ACC_NONFINITE_VALUE`, `ACC_NUMERIC_UNDERFLOW` | NaN/infinity/overflow or nonzero-to-zero underflow |
+| `ACC_VALUE_OUT_OF_RANGE`, `ACC_UNEXPECTED_UNIT`, `ACC_UNIT_CONFLICT` | Range or unit violation |
+| `ACC_MISSING_FEATURES`, `ACC_EXTRA_FEATURES` | Required features absent; extra features observed |
+| `ACC_<FIELD>_UNKNOWN`, `ACC_<FIELD>_MISMATCH` | Missing/unknown or incompatible modality, species, tissue, assay, platform, units, or preprocessing |
+| `ACC_PREPROCESSING_UNVERIFIED`, `ACC_PREPROCESSING_UNBOUND` | Missing normalization record or input checksum binding |
+| `ACC_PREPROCESSING_DECLARED` | Processing history remains a caller declaration |
+| `ACC_SAMPLE_SELECTION_REQUIRED`, `ACC_UNKNOWN_SAMPLE` | Ambiguous or absent sample selection |
+| `ACC_INPUT_CHECKSUM_MISMATCH`, `ACC_CHECKSUM_MISMATCH` | Submitted input or reference artifact integrity failure |
+| `ACC_IMPLEMENTATION_UNAVAILABLE`, `ACC_REQUIREMENT_UNRESOLVED` | Execution or scientific contract is unsupported |
+| `ACC_REFERENCE_MISMATCH`, `ACC_REFERENCE_NONCONFORMANT` | Numerical mismatch or public scoring blocked by a failed reference suite |
+
+File/parser/configuration errors that prevent creation of a Sample use the
+application error envelope (`error.code`, `error.message`) instead of pretending a
+partial scientific report passed. CLI exit semantics are in [quick start](quickstart.md).
+
 ## Coverage arithmetic
 
 Counts refer to unique identifiers. `present_count` includes required identifiers
